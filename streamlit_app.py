@@ -47,9 +47,12 @@ if submitted:
     })
 
     # Standardize the input data (assuming the same scaler was used during training)
-    scaler = StandardScaler()
-    input_data_scaled = scaler.fit_transform(input_data)
-
+    # scaler = StandardScaler()
+    scaler_path = 'standard_scaler.pkl'  # Ensure this file exists
+    scaler = joblib.load(scaler_path)
+    input_data_scaled = scaler.transform(input_data)
+    # st.title(input_data)
+    # st.title(input_data_scaled)
     # Predict quality
     prediction = model.predict(input_data_scaled)
 
