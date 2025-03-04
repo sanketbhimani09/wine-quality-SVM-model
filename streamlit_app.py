@@ -1,12 +1,11 @@
 import pandas as pd
-import pickle
+import joblib
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
 
-# Load the saved model using pickle
+# Load the saved model
 model_path = 'svc_wine_quality_model.pkl'  # Replace with the correct path
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
+model = joblib.load(model_path)
 
 # Streamlit App
 st.title("Wine Quality Prediction")
